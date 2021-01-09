@@ -23,7 +23,7 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 <img src="Flix.gif" width=400><br>
 
 ### Notes
-- Met "SSLHandShakeException: Chain validation failed" a few times. I still don't know the reason but I am guessing it could be my network issue.
+- I met "SSLHandShakeException: Chain validation failed" a few times. I still don't know the reason but I am guessing it could be my network issue.
 
 ### Open-source libraries used
 
