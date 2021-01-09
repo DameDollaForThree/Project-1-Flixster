@@ -20,7 +20,7 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 - [ ] (2pts) For popular movies (i.e. a movie voted for more than 5 stars), the full backdrop image is displayed. Otherwise, a poster image, the movie title, and overview is listed. Use Heterogenous RecyclerViews and use different ViewHolder layout files for popular movies and less popular ones.
 
 ### App Walkthough GIF
-<img src="Flix.gif" width=250><br>
+<img src="Flix.gif" width=400><br>
 
 ### Notes
 - Met "SSLHandShakeException: Chain validation failed" a few times. I still don't know the reason but I am guessing it could be my network issue.
