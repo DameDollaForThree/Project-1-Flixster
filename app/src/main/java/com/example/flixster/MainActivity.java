@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         // set a Layout Manager
         rvMovies.setLayoutManager(new LinearLayoutManager(this));
 
-
         AsyncHttpClient client = new AsyncHttpClient();
         client.get(NOW_PLAYING_URL, new JsonHttpResponseHandler() {
             @Override
