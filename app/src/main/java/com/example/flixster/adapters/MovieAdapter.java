@@ -1,6 +1,8 @@
 package com.example.flixster.adapters;
 
+import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.content.res.Configuration;
 import android.graphics.Color;
 import android.graphics.PorterDuff;
@@ -11,17 +13,29 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.ActivityOptionsCompat;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.resource.bitmap.RoundedCorners;
+import com.bumptech.glide.request.target.Target;
+import com.example.flixster.DetailActivity;
+import com.example.flixster.MainActivity;
 import com.example.flixster.R;
 import com.example.flixster.models.Movie;
 
+import org.parceler.Parcels;
+
 import java.util.List;
+
+import jp.wasabeef.glide.transformations.RoundedCornersTransformation;
 
 public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
@@ -99,25 +113,49 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
     }
 
 
+    // ViewHolder2
     // big backdrop image with 5 star rating
     public class ViewHolder2 extends RecyclerView.ViewHolder {
+        RelativeLayout container;
         ImageView poster;
 
         public ViewHolder2(@NonNull View itemView) {
             super(itemView);
             poster = itemView.findViewById(R.id.backdrop);
+            container = itemView.findViewById(R.id.container);
         }
 
         public void bind(Movie movie) {
             String imageUrl;
             imageUrl = movie.getBackdropPath();
-            Glide.with(context).load(imageUrl).into(poster);
+
+            int radius = 200;
+            Glide.with(context)
+                    .load(imageUrl)
+                    .transform(new RoundedCorners(radius))
+                    .into(poster);
+
+            // 1. Register click listener on the whole row
+            container.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    // 2. Navigate to a new activity on tap
+//                    Toast.makeText(context, movie.getTitle(), Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(context, DetailActivity.class);
+                    i.putExtra("movie", Parcels.wrap(movie));
+                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation((Activity)context, v, "profile");
+                    context.startActivity(i, options.toBundle());
+                }
+            });
         }
     }
 
-    //
+
+    // ViewHolder1
     public class ViewHolder1 extends RecyclerView.ViewHolder {
 
+        RelativeLayout container;
         TextView tvTitle;
         TextView tvOverview;
         ImageView ivPoster;
@@ -125,6 +163,7 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
 
         public ViewHolder1(@NonNull View itemView) {
             super(itemView);
+            container = itemView.findViewById(R.id.container);
             tvTitle = itemView.findViewById(R.id.tvTitle);
             tvOverview = itemView.findViewById(R.id.tvOverview);
             ivPoster = itemView.findViewById(R.id.ivPoster);
@@ -145,7 +184,12 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
                 imageUrl = movie.getPosterPath();
             }
 
-            Glide.with(context).load(imageUrl).into(ivPoster);
+            int radius = 100;
+            Glide.with(context)
+                    .load(imageUrl)
+                    .fitCenter()
+                    .transform(new RoundedCorners(radius))
+                    .into(ivPoster);
 
             // process rating
             if (movie.getRating() <= 10 && movie.getRating() >= 8) {
@@ -163,6 +207,20 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             else if (movie.getRating() < 2 && movie.getRating() >= 0) {
                 rating.setNumStars(1);
             }
+
+            // 1. Register click listener on the whole row
+            container.setOnClickListener(new View.OnClickListener(){
+                @Override
+                public void onClick(View v) {
+                    // 2. Navigate to a new activity on tap
+//                    Toast.makeText(context, movie.getTitle(), Toast.LENGTH_SHORT).show();
+                    Intent i = new Intent(context, DetailActivity.class);
+                    i.putExtra("movie", Parcels.wrap(movie));
+                    ActivityOptionsCompat options = ActivityOptionsCompat.
+                            makeSceneTransitionAnimation((Activity)context, v, "profile");
+                    context.startActivity(i, options.toBundle());
+                }
+            });
         }
     }
 }

@@ -3,9 +3,11 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/container"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="10dp">
+    android:layout_marginBottom="10dp"
+    android:transitionName="profile">
 
     <ImageView
         android:id="@+id/ivPoster"
@@ -13,24 +15,26 @@
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
         android:layout_alignParentTop="true"
-        android:layout_margin="16dp"
+        android:layout_marginStart="15dp"
+        android:layout_marginTop="7dp"
+        android:layout_marginBottom="16dp"
         tools:srcCompat="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="5dp"
-        android:layout_marginTop="16dp"
+        android:layout_alignTop="@+id/ivPoster"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="0dp"
         android:layout_toEndOf="@+id/ivPoster"
-        android:textSize="24sp"
-        android:textColor="#FBFBFB"
-        android:textStyle="bold"
         android:shadowColor="#000"
         android:shadowDx="0"
         android:shadowDy="0"
         android:shadowRadius="50"
+        android:textColor="#FBFBFB"
+        android:textSize="24sp"
+        android:textStyle="bold"
         tools:text="Wonder Woman 1984" />
 
     <TextView
@@ -39,7 +43,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/tvTitle"
         android:layout_alignParentEnd="true"
-        android:layout_marginStart="5dp"
+        android:layout_marginStart="10dp"
         android:layout_marginTop="5dp"
         android:layout_marginEnd="1dp"
         android:layout_toEndOf="@+id/ivPoster"
