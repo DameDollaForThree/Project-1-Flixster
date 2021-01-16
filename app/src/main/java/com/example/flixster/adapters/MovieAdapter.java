@@ -130,9 +130,10 @@ public class MovieAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder>{
             imageUrl = movie.getBackdropPath();
 
             int radius = 200;
+            int margin = 0;
             Glide.with(context)
                     .load(imageUrl)
-                    .transform(new RoundedCorners(radius))
+                    .transform(new RoundedCornersTransformation(radius, margin))
                     .into(poster);
 
             // 1. Register click listener on the whole row
