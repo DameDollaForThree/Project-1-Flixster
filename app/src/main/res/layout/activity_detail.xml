@@ -9,11 +9,17 @@
     tools:context=".DetailActivity"
     android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/backdrop_poster"
+<!--    <ImageView-->
+<!--        android:id="@+id/backdrop_poster"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        tools:srcCompat="@tools:sample/avatars" />-->
+
+    <com.google.android.youtube.player.YouTubePlayerView
+        android:id="@+id/player"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        tools:srcCompat="@tools:sample/avatars" />
+        android:layout_height="250dp" />
+
     <TextView
         android:id="@+id/tvTitle2"
         android:layout_width="match_parent"
