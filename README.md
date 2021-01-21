@@ -22,11 +22,12 @@ Flix is an app that allows users to browse movies from the [The Movie Database A
 
 ### App Walkthough GIF
 
-<img src="https://i.imgur.com/4OaZ0df.gif"><br>
+<img src="https://i.imgur.com/4OaZ0df.gif" width=500><br>
+In case the GIF can't be seen, here is the direct link to the gif: https://i.imgur.com/4OaZ0df.gif.
 
 ### Notes
 
-- The YouTube Player can't be initialized on my emulator. It's probably because I am using API level 30. I've seen a suggestion to use API level 29; however, because I am using an external emulator on M1 chip, I wasn't able to switch to API level 29.
+- The YouTube Player can't be initialized on my emulator. It's probably because I am using API level 30. I've seen a suggestion on slack to use API level 29; however, because I am using an external emulator on M1 chip, I wasn't able to switch to API level 29.
 
 ## Open-source libraries used
 - [Android Async HTTP](https://github.com/codepath/CPAsyncHttpClient) - Simple asynchronous HTTP requests with JSON parsing
